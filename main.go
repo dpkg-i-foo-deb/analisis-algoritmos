@@ -5,5 +5,10 @@ import (
 )
 
 func main() {
+	probar()
+}
+
+func probar() {
 	pruebas.MatrizSimetrica()
+	pruebas.SumaMatrices()
 }

@@ -1,4 +1,4 @@
-package matrizsimetrica
+package matrices
 
 // Determinar si una matriz es simétrica de una manera decente
 func EsSimetricaDecente(matriz [][]int) bool {
