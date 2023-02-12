@@ -11,4 +11,6 @@ func main() {
 func probar() {
 	pruebas.MatrizSimetrica()
 	pruebas.SumaMatrices()
+	pruebas.RestaMatrices()
+	pruebas.Multiplicar()
 }
