@@ -13,4 +13,5 @@ func probar() {
 	pruebas.SumaMatrices()
 	pruebas.RestaMatrices()
 	pruebas.Multiplicar()
+	pruebas.MultiplicarMatricesPrueba()
 }
