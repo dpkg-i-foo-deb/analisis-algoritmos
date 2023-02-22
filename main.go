@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	pruebas.MatrizSimetrica()
+	pruebas.Espiral()
 }
