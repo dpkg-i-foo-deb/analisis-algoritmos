@@ -1,5 +1,7 @@
 package ordenamiento
 
+// Creado por ChatGPT
+// Adaptado para usar punteros
 func StrandSort(arr *[]int) []int {
 	if len(*arr) <= 1 {
 		return *arr
