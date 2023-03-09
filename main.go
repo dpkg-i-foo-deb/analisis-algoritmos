@@ -1,7 +1,7 @@
 package main
 
-import ()
+import "analisis-algoritmos/cmd"
 
 func main() {
-
+	cmd.Execute()
 }
