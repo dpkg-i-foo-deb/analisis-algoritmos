@@ -1,4 +1,4 @@
-package matrizespiral
+package matrices
 
 func LlenarEspiral(tam int) [][]int {
 
