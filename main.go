@@ -5,13 +5,7 @@ import (
 )
 
 func main() {
-	probar()
-}
 
-func probar() {
-	pruebas.MatrizSimetrica()
-	pruebas.SumaMatrices()
-	pruebas.RestaMatrices()
-	pruebas.Multiplicar()
-	pruebas.MultiplicarMatricesPrueba()
+	pruebas.Espiral()
+
 }
