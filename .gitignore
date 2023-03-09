@@ -12,5 +12,7 @@
 *.out
 __debug_bin
 
+__debug_bin
+
 # Dependency directories (remove the comment below to include it)
 # vendor/

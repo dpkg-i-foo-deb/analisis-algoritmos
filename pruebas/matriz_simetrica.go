@@ -1,7 +1,7 @@
 package pruebas
 
 import (
-	matrizsimetrica "analisis-algoritmos/matriz_simetrica"
+	"analisis-algoritmos/matrices"
 	"analisis-algoritmos/tiempo"
 )
 
@@ -20,11 +20,11 @@ func MatrizSimetrica() {
 func verificarMejorSimetrica(matriz *[][]int) {
 	defer tiempo.MedirTiempo("Mejor matriz simétrica")()
 
-	matrizsimetrica.EsSimetricaDecente(*matriz)
+	matrices.EsSimetricaDecente(*matriz)
 }
 
 func verificarPeorSimetrica(matriz *[][]int) {
 	defer tiempo.MedirTiempo("Peor matriz simétrica")()
 
-	matrizsimetrica.EsSimetricaPeor(*matriz)
+	matrices.EsSimetricaPeor(*matriz)
 }
