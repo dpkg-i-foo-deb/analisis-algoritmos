@@ -1,11 +1,7 @@
 package main
 
-import (
-	"analisis-algoritmos/pruebas"
-)
+import ()
 
 func main() {
-
-	pruebas.Espiral()
 
 }
