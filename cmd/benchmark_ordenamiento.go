@@ -34,6 +34,7 @@ func benchmarkOrdenamiento(cmd *cobra.Command, args []string) {
 	benchmark.BmarkBubbleSort(arreglosBenchmark)
 	benchmark.BmarkBucketSort(arreglosBenchmark)
 	benchmark.BmarkGnomeSort(arreglosBenchmark)
+	benchmark.BmarkHeapSort(arreglosBenchmark)
 }
 
 func abrirArchivos() {
