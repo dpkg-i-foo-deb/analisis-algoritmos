@@ -24,7 +24,7 @@ func bucketSort(arreglo *modelos.Arreglo) {
 		titulo = "Bucket Sort 100 millones de elementos"
 	}
 
-	defer tiempo.MedirTiempo(titulo)
+	defer tiempo.MedirTiempo(titulo)()
 
 	ordenamiento.BucketSort(&arreglo.Arr)
 }
