@@ -4,6 +4,7 @@ import (
 	"analisis-algoritmos/modelos"
 	"analisis-algoritmos/ordenamiento"
 	"analisis-algoritmos/tiempo"
+	"log"
 )
 
 func BmarkStoogeSort(arreglos []*modelos.Arreglo) {
@@ -19,9 +20,11 @@ func stoogeSort(arreglo *modelos.Arreglo) {
 	case 10000:
 		titulo = "Stooge Sort 10 mil elementos"
 	case 100000:
-		titulo = "Stooge Sort 100 mil elementos"
+		log.Println("Stooge Sort tomaría 21 años con 100 mil elementos")
+		return
 	case 1000000:
-		titulo = "Stooge Sort 1 millón de elementos"
+		log.Println("Stooge Sort tomaría 51 millones de años con 1 millón de elementos")
+		return
 	}
 
 	defer tiempo.MedirTiempo(titulo)()
