@@ -9,13 +9,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var archivo10Mil *os.File
+var archivo100Mil *os.File
 var archivo1Millon *os.File
-var archivo10Millones *os.File
-var archivo100Millones *os.File
 
+var arreglo10Mil modelos.Arreglo
+var arreglo100Mil modelos.Arreglo
 var arreglo1Millon modelos.Arreglo
-var arreglo10Millones modelos.Arreglo
-var arreglo100Millones modelos.Arreglo
 
 var crearArreglosCmd = &cobra.Command{
 	Use:   "crear-arreglos",
@@ -31,21 +31,21 @@ func init() {
 }
 
 func crearArreglos(cmd *cobra.Command, args []string) {
+	archivo10Mil = util.CrearArchivo("arreglo-10-mil.json")
+	archivo100Mil = util.CrearArchivo("arreglo-100-mil.json")
 	archivo1Millon = util.CrearArchivo("arreglo-1-millon.json")
-	archivo10Millones = util.CrearArchivo("arreglo-10-millones.json")
-	archivo100Millones = util.CrearArchivo("arreglo-100-millones.json")
+
+	arreglo10Mil.Arr = util.GenerarArreglo(10000)
+
+	arreglo100Mil.Arr = util.GenerarArreglo(100000)
 
 	arreglo1Millon.Arr = util.GenerarArreglo(1000000)
 
-	arreglo10Millones.Arr = util.GenerarArreglo(10000000)
-
-	arreglo100Millones.Arr = util.GenerarArreglo(100000000)
-
+	encoder10Mil := json.NewEncoder(archivo10Mil)
+	encoder100Mil := json.NewEncoder(archivo100Mil)
 	encoder1Millon := json.NewEncoder(archivo1Millon)
-	encoder10Millones := json.NewEncoder(archivo10Millones)
-	encoder100Millones := json.NewEncoder(archivo100Millones)
 
+	encoder10Mil.Encode(arreglo10Mil)
+	encoder100Mil.Encode(arreglo100Mil)
 	encoder1Millon.Encode(arreglo1Millon)
-	encoder10Millones.Encode(arreglo10Millones)
-	encoder100Millones.Encode(arreglo100Millones)
 }
