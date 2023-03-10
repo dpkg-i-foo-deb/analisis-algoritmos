@@ -9,3 +9,11 @@ func CrearArchivo(nombre string) *os.File {
 
 	return archivo
 }
+
+func AbrirArchivo(nombre string) *os.File {
+	archivo, err := os.Open(nombre)
+
+	VerificarErrorDetener(err)
+
+	return archivo
+}
