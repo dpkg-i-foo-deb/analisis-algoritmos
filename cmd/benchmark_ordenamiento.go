@@ -48,7 +48,7 @@ func benchmarkOrdenamiento(cmd *cobra.Command, args []string) {
 
 func abrirArchivos() {
 	log.Println("Buscando los archivos...")
-	archivo10Mil = util.AbrirArchivo("arreglo-10-miljson")
+	archivo10Mil = util.AbrirArchivo("arreglo-10-mil.json")
 	archivo100Mil = util.AbrirArchivo("arreglo-100-mil.json")
 	archivo1Millon = util.AbrirArchivo("arreglo-1-millon.json")
 }
