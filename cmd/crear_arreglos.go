@@ -35,11 +35,11 @@ func crearArreglos(cmd *cobra.Command, args []string) {
 	archivo10Millones = util.CrearArchivo("arreglo-10-millones.json")
 	archivo100Millones = util.CrearArchivo("arreglo-100-millones.json")
 
-	arreglo1Millon.Arr = util.GenerarArreglo(4, 1000000)
+	arreglo1Millon.Arr = util.GenerarArreglo(1000000)
 
-	arreglo10Millones.Arr = util.GenerarArreglo(4, 10000000)
+	arreglo10Millones.Arr = util.GenerarArreglo(10000000)
 
-	arreglo100Millones.Arr = util.GenerarArreglo(4, 100000000)
+	arreglo100Millones.Arr = util.GenerarArreglo(100000000)
 
 	encoder1Millon := json.NewEncoder(archivo1Millon)
 	encoder10Millones := json.NewEncoder(archivo10Millones)
