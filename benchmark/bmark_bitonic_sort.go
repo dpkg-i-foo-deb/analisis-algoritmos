@@ -6,13 +6,13 @@ import (
 	"analisis-algoritmos/tiempo"
 )
 
-func BmarkBitonicSort(arreglos []*modelos.Arreglo) {
+func BmarkBitonicSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
 		bitonicSort(arreglos[i])
 	}
 }
 
-func bitonicSort(arreglo *modelos.Arreglo) {
+func bitonicSort(arreglo modelos.Arreglo) {
 	var titulo string
 
 	switch len(arreglo.Arr) {

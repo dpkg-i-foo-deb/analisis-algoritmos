@@ -6,13 +6,13 @@ import (
 	"analisis-algoritmos/tiempo"
 )
 
-func BmarkRecursiveInsertionSort(arreglos []*modelos.Arreglo) {
+func BmarkRecursiveInsertionSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
 		recursiveInsertionSort(arreglos[i])
 	}
 }
 
-func recursiveInsertionSort(arreglo *modelos.Arreglo) {
+func recursiveInsertionSort(arreglo modelos.Arreglo) {
 	var titulo string
 
 	switch len(arreglo.Arr) {

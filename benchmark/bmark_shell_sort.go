@@ -6,13 +6,13 @@ import (
 	"analisis-algoritmos/tiempo"
 )
 
-func BmarkShellSort(arreglos []*modelos.Arreglo) {
+func BmarkShellSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
 		shellSort(arreglos[i])
 	}
 }
 
-func shellSort(arreglo *modelos.Arreglo) {
+func shellSort(arreglo modelos.Arreglo) {
 	var titulo string
 
 	switch len(arreglo.Arr) {

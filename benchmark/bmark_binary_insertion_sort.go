@@ -6,13 +6,13 @@ import (
 	"analisis-algoritmos/tiempo"
 )
 
-func BmarkBinaryInsertionSort(arreglos []*modelos.Arreglo) {
+func BmarkBinaryInsertionSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
 		binaryInsertionSort((arreglos)[i])
 	}
 }
 
-func binaryInsertionSort(arreglo *modelos.Arreglo) {
+func binaryInsertionSort(arreglo modelos.Arreglo) {
 
 	var titulo string
 

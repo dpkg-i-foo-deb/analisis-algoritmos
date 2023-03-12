@@ -6,6 +6,7 @@ import (
 	"analisis-algoritmos/util"
 	"encoding/json"
 	"log"
+	"sync"
 
 	"github.com/spf13/cobra"
 )
@@ -19,32 +20,50 @@ var benchmarkOrdenamientoCmd = &cobra.Command{
 	Run: benchmarkOrdenamiento,
 }
 
-var arreglosBenchmark []*modelos.Arreglo
+var benchmarks []func([]modelos.Arreglo)
+
+var arreglosBenchmark []modelos.Arreglo
 
 func init() {
 	rootCmd.AddCommand(benchmarkOrdenamientoCmd)
+	benchmarks = append(benchmarks, benchmark.BmarkBinaryInsertionSort)
+	benchmarks = append(benchmarks, benchmark.BmarkBitonicSort)
+	benchmarks = append(benchmarks, benchmark.BmarkBubbleSort)
+	benchmarks = append(benchmarks, benchmark.BmarkBucketSort)
+	benchmarks = append(benchmarks, benchmark.BmarkGnomeSort)
+	benchmarks = append(benchmarks, benchmark.BmarkHeapSort)
+	benchmarks = append(benchmarks, benchmark.BmarkQuickSort)
+	benchmarks = append(benchmarks, benchmark.BmarkRadixSort)
+	benchmarks = append(benchmarks, benchmark.BmarkRecursiveInsertionSort)
+	benchmarks = append(benchmarks, benchmark.BmarkSelectionSort)
+	benchmarks = append(benchmarks, benchmark.BmarkShakerSort)
+	benchmarks = append(benchmarks, benchmark.BmarkShellSort)
+	benchmarks = append(benchmarks, benchmark.BmarkStoogeSort)
+	benchmarks = append(benchmarks, benchmark.BmarkStrandSort)
+	benchmarks = append(benchmarks, benchmark.BmarkMergeSort)
+
 }
 
 func benchmarkOrdenamiento(cmd *cobra.Command, args []string) {
 	abrirArchivos()
 	leerAreglos()
+
 	log.Println("Ejecutando los benchmark, tomará un rato...")
-	benchmark.BmarkBinaryInsertionSort(arreglosBenchmark)
-	benchmark.BmarkBitonicSort(arreglosBenchmark)
-	benchmark.BmarkBubbleSort(arreglosBenchmark)
-	benchmark.BmarkBucketSort(arreglosBenchmark)
-	benchmark.BmarkGnomeSort(arreglosBenchmark)
-	benchmark.BmarkHeapSort(arreglosBenchmark)
-	benchmark.BmarkBinaryInsertionSort(arreglosBenchmark)
-	benchmark.BmarkQuickSort(arreglosBenchmark)
-	benchmark.BmarkRadixSort(arreglosBenchmark)
-	benchmark.BmarkRecursiveInsertionSort(arreglosBenchmark)
-	benchmark.BmarkSelectionSort(arreglosBenchmark)
-	benchmark.BmarkShakerSort(arreglosBenchmark)
-	benchmark.BmarkShellSort(arreglosBenchmark)
-	benchmark.BmarkStoogeSort(arreglosBenchmark)
-	benchmark.BmarkStrandSort(arreglosBenchmark)
-	benchmark.BmarkMergeSort(arreglosBenchmark)
+
+	var wg sync.WaitGroup
+
+	for i := range benchmarks {
+
+		wg.Add(1)
+
+		copia := make([]modelos.Arreglo, len(arreglosBenchmark), cap(arreglosBenchmark))
+
+		copy(copia, arreglosBenchmark)
+
+		go benchmarks[i](copia)
+	}
+
+	wg.Wait()
 }
 
 func abrirArchivos() {
@@ -75,5 +94,5 @@ func leerAreglos() {
 
 	util.VerificarErrorDetener(err)
 
-	arreglosBenchmark = append(arreglosBenchmark, &arreglo10Mil, &arreglo100Mil, &arreglo1Millon)
+	arreglosBenchmark = append(arreglosBenchmark, arreglo10Mil, arreglo100Mil, arreglo1Millon)
 }

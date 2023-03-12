@@ -6,13 +6,13 @@ import (
 	"analisis-algoritmos/tiempo"
 )
 
-func BmarkHeapSort(arreglos []*modelos.Arreglo) {
+func BmarkHeapSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
 		heapSort(arreglos[i])
 	}
 }
 
-func heapSort(arreglo *modelos.Arreglo) {
+func heapSort(arreglo modelos.Arreglo) {
 	var titulo string
 
 	switch len(arreglo.Arr) {

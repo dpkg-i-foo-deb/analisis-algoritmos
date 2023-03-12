@@ -6,13 +6,13 @@ import (
 	"analisis-algoritmos/tiempo"
 )
 
-func BmarkGnomeSort(arreglos []*modelos.Arreglo) {
+func BmarkGnomeSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
 		gnomeSort(arreglos[i])
 	}
 }
 
-func gnomeSort(arreglo *modelos.Arreglo) {
+func gnomeSort(arreglo modelos.Arreglo) {
 	var titulo string
 
 	switch len(arreglo.Arr) {

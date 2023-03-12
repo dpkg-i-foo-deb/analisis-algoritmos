@@ -6,13 +6,13 @@ import (
 	"analisis-algoritmos/tiempo"
 )
 
-func BmarkBucketSort(arreglos []*modelos.Arreglo) {
+func BmarkBucketSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
 		bucketSort(arreglos[i])
 	}
 }
 
-func bucketSort(arreglo *modelos.Arreglo) {
+func bucketSort(arreglo modelos.Arreglo) {
 	var titulo string
 
 	switch len(arreglo.Arr) {

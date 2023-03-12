@@ -7,13 +7,13 @@ import (
 	"log"
 )
 
-func BmarkStoogeSort(arreglos []*modelos.Arreglo) {
+func BmarkStoogeSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
 		stoogeSort(arreglos[i])
 	}
 }
 
-func stoogeSort(arreglo *modelos.Arreglo) {
+func stoogeSort(arreglo modelos.Arreglo) {
 	var titulo string
 
 	switch len(arreglo.Arr) {

@@ -6,13 +6,13 @@ import (
 	"analisis-algoritmos/tiempo"
 )
 
-func BmarkRadixSort(arreglos []*modelos.Arreglo) {
+func BmarkRadixSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
 		radixSort(arreglos[i])
 	}
 }
 
-func radixSort(arreglo *modelos.Arreglo) {
+func radixSort(arreglo modelos.Arreglo) {
 	var titulo string
 
 	switch len(arreglo.Arr) {

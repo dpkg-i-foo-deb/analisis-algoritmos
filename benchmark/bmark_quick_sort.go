@@ -6,13 +6,13 @@ import (
 	"analisis-algoritmos/tiempo"
 )
 
-func BmarkQuickSort(arreglos []*modelos.Arreglo) {
+func BmarkQuickSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
 		quickSort(arreglos[i])
 	}
 }
 
-func quickSort(arreglo *modelos.Arreglo) {
+func quickSort(arreglo modelos.Arreglo) {
 	var titulo string
 
 	switch len(arreglo.Arr) {
