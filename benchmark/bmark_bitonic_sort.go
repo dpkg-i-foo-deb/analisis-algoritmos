@@ -4,15 +4,17 @@ import (
 	"analisis-algoritmos/modelos"
 	"analisis-algoritmos/ordenamiento"
 	"analisis-algoritmos/tiempo"
+	"sync"
 )
 
-func BmarkBitonicSort(arreglos []modelos.Arreglo) {
+func BmarkBitonicSort(arreglos []modelos.Arreglo, wg *sync.WaitGroup) {
 	for i := range arreglos {
-		go bitonicSort(arreglos[i])
+		wg.Add(1)
+		go bitonicSort(arreglos[i], wg)
 	}
 }
 
-func bitonicSort(arreglo modelos.Arreglo) {
+func bitonicSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 	var titulo string
 
 	switch len(arreglo.Arr) {
@@ -25,6 +27,7 @@ func bitonicSort(arreglo modelos.Arreglo) {
 	}
 
 	defer tiempo.MedirTiempo(titulo)()
+	defer wg.Done()
 
 	ordenamiento.BitonicSort(&arreglo.Arr, 0, len(arreglo.Arr), true)
 }

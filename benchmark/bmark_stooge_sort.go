@@ -5,15 +5,17 @@ import (
 	"analisis-algoritmos/ordenamiento"
 	"analisis-algoritmos/tiempo"
 	"log"
+	"sync"
 )
 
-func BmarkStoogeSort(arreglos []modelos.Arreglo) {
+func BmarkStoogeSort(arreglos []modelos.Arreglo, wg *sync.WaitGroup) {
 	for i := range arreglos {
-		go stoogeSort(arreglos[i])
+		wg.Add(1)
+		go stoogeSort(arreglos[i], wg)
 	}
 }
 
-func stoogeSort(arreglo modelos.Arreglo) {
+func stoogeSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 	var titulo string
 
 	switch len(arreglo.Arr) {
@@ -28,6 +30,7 @@ func stoogeSort(arreglo modelos.Arreglo) {
 	}
 
 	defer tiempo.MedirTiempo(titulo)()
+	defer wg.Done()
 
 	ordenamiento.StoogeSort(&arreglo.Arr, 0, len(arreglo.Arr)-1)
 }

@@ -20,7 +20,7 @@ var benchmarkOrdenamientoCmd = &cobra.Command{
 	Run: benchmarkOrdenamiento,
 }
 
-var benchmarks []func([]modelos.Arreglo)
+var benchmarks []func([]modelos.Arreglo, *sync.WaitGroup)
 
 var arreglosBenchmark []modelos.Arreglo
 
@@ -54,13 +54,12 @@ func benchmarkOrdenamiento(cmd *cobra.Command, args []string) {
 
 	for i := range benchmarks {
 
-		wg.Add(1)
-
 		copia := make([]modelos.Arreglo, len(arreglosBenchmark), cap(arreglosBenchmark))
 
 		copy(copia, arreglosBenchmark)
 
-		go benchmarks[i](copia)
+		benchmarks[i](copia, &wg)
+
 	}
 
 	wg.Wait()

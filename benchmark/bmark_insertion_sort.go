@@ -4,15 +4,17 @@ import (
 	"analisis-algoritmos/modelos"
 	"analisis-algoritmos/ordenamiento"
 	"analisis-algoritmos/tiempo"
+	"sync"
 )
 
-func BmarkInsertionSort(arreglos []modelos.Arreglo) {
+func BmarkInsertionSort(arreglos []modelos.Arreglo, wg *sync.WaitGroup) {
 	for i := range arreglos {
-		go insertionSort(arreglos[i])
+		wg.Add(1)
+		go insertionSort(arreglos[i], wg)
 	}
 }
 
-func insertionSort(arreglo modelos.Arreglo) {
+func insertionSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 	var titulo string
 
 	switch len(arreglo.Arr) {
@@ -25,6 +27,7 @@ func insertionSort(arreglo modelos.Arreglo) {
 	}
 
 	defer tiempo.MedirTiempo(titulo)()
+	defer wg.Done()
 
 	ordenamiento.InsertionSort(&arreglo.Arr)
 }

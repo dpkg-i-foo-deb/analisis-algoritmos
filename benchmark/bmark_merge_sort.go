@@ -4,15 +4,17 @@ import (
 	"analisis-algoritmos/modelos"
 	"analisis-algoritmos/ordenamiento"
 	"analisis-algoritmos/tiempo"
+	"sync"
 )
 
-func BmarkMergeSort(arreglos []modelos.Arreglo) {
+func BmarkMergeSort(arreglos []modelos.Arreglo, wg *sync.WaitGroup) {
 	for i := range arreglos {
-		go mergeSort(arreglos[i])
+		wg.Add(1)
+		go mergeSort(arreglos[i], wg)
 	}
 }
 
-func mergeSort(arreglo modelos.Arreglo) {
+func mergeSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 	var titulo string
 
 	switch len(arreglo.Arr) {
@@ -25,6 +27,7 @@ func mergeSort(arreglo modelos.Arreglo) {
 	}
 
 	defer tiempo.MedirTiempo(titulo)()
+	defer wg.Done()
 
 	ordenamiento.MergeSort(&arreglo.Arr)
 }

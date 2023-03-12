@@ -4,15 +4,16 @@ import (
 	"analisis-algoritmos/modelos"
 	"analisis-algoritmos/ordenamiento"
 	"analisis-algoritmos/tiempo"
+	"sync"
 )
 
-func BmarkBubbleSort(arreglos []modelos.Arreglo) {
+func BmarkBubbleSort(arreglos []modelos.Arreglo, wg *sync.WaitGroup) {
 	for i := range arreglos {
-		go bubbleSort(arreglos[i])
+		go bubbleSort(arreglos[i], wg)
 	}
 }
 
-func bubbleSort(arreglo modelos.Arreglo) {
+func bubbleSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 	var titulo string
 
 	switch len(arreglo.Arr) {
@@ -25,6 +26,7 @@ func bubbleSort(arreglo modelos.Arreglo) {
 	}
 
 	defer tiempo.MedirTiempo(titulo)()
+	defer wg.Done()
 
 	ordenamiento.BubbleSort(&arreglo.Arr)
 }

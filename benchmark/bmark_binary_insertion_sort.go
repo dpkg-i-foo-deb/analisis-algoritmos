@@ -4,15 +4,17 @@ import (
 	"analisis-algoritmos/modelos"
 	"analisis-algoritmos/ordenamiento"
 	"analisis-algoritmos/tiempo"
+	"sync"
 )
 
-func BmarkBinaryInsertionSort(arreglos []modelos.Arreglo) {
+func BmarkBinaryInsertionSort(arreglos []modelos.Arreglo, wg *sync.WaitGroup) {
 	for i := range arreglos {
-		go binaryInsertionSort((arreglos)[i])
+		wg.Add(1)
+		go binaryInsertionSort((arreglos)[i], wg)
 	}
 }
 
-func binaryInsertionSort(arreglo modelos.Arreglo) {
+func binaryInsertionSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 
 	var titulo string
 
@@ -26,6 +28,7 @@ func binaryInsertionSort(arreglo modelos.Arreglo) {
 	}
 
 	defer tiempo.MedirTiempo(titulo)()
+	defer wg.Done()
 
 	ordenamiento.BinaryInsertionSort(&arreglo.Arr)
 }

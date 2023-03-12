@@ -4,15 +4,17 @@ import (
 	"analisis-algoritmos/modelos"
 	"analisis-algoritmos/ordenamiento"
 	"analisis-algoritmos/tiempo"
+	"sync"
 )
 
-func BmarkRecursiveInsertionSort(arreglos []modelos.Arreglo) {
+func BmarkRecursiveInsertionSort(arreglos []modelos.Arreglo, wg *sync.WaitGroup) {
 	for i := range arreglos {
-		go recursiveInsertionSort(arreglos[i])
+		wg.Add(1)
+		go recursiveInsertionSort(arreglos[i], wg)
 	}
 }
 
-func recursiveInsertionSort(arreglo modelos.Arreglo) {
+func recursiveInsertionSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 	var titulo string
 
 	switch len(arreglo.Arr) {
@@ -25,6 +27,7 @@ func recursiveInsertionSort(arreglo modelos.Arreglo) {
 	}
 
 	defer tiempo.MedirTiempo(titulo)()
+	defer wg.Done()
 
 	ordenamiento.RecursiveInsertionSort(&arreglo.Arr, len(arreglo.Arr))
 }
