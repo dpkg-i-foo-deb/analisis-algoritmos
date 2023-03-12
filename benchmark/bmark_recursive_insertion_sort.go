@@ -8,7 +8,7 @@ import (
 
 func BmarkRecursiveInsertionSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		recursiveInsertionSort(arreglos[i])
+		go recursiveInsertionSort(arreglos[i])
 	}
 }
 

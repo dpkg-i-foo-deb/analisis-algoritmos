@@ -8,7 +8,7 @@ import (
 
 func BmarkGnomeSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		gnomeSort(arreglos[i])
+		go gnomeSort(arreglos[i])
 	}
 }
 

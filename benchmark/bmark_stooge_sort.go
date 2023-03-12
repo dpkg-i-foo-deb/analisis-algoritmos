@@ -9,7 +9,7 @@ import (
 
 func BmarkStoogeSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		stoogeSort(arreglos[i])
+		go stoogeSort(arreglos[i])
 	}
 }
 

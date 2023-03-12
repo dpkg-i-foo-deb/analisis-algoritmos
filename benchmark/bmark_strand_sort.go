@@ -8,7 +8,7 @@ import (
 
 func BmarkStrandSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		strandSort(arreglos[i])
+		go strandSort(arreglos[i])
 	}
 }
 

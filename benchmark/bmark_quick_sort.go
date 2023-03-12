@@ -8,7 +8,7 @@ import (
 
 func BmarkQuickSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		quickSort(arreglos[i])
+		go quickSort(arreglos[i])
 	}
 }
 

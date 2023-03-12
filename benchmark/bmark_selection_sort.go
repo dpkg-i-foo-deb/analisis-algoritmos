@@ -8,7 +8,7 @@ import (
 
 func BmarkSelectionSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		selectionSort(arreglos[i])
+		go selectionSort(arreglos[i])
 	}
 }
 

@@ -8,7 +8,7 @@ import (
 
 func BmarkBubbleSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		bubbleSort(arreglos[i])
+		go bubbleSort(arreglos[i])
 	}
 }
 

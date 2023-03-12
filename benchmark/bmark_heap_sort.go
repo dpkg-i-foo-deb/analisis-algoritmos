@@ -8,7 +8,7 @@ import (
 
 func BmarkHeapSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		heapSort(arreglos[i])
+		go heapSort(arreglos[i])
 	}
 }
 

@@ -8,7 +8,7 @@ import (
 
 func BmarkShellSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		shellSort(arreglos[i])
+		go shellSort(arreglos[i])
 	}
 }
 

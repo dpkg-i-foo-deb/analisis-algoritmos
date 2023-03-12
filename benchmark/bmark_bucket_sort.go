@@ -8,7 +8,7 @@ import (
 
 func BmarkBucketSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		bucketSort(arreglos[i])
+		go bucketSort(arreglos[i])
 	}
 }
 

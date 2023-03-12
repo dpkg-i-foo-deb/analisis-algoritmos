@@ -8,7 +8,7 @@ import (
 
 func BmarkMergeSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		mergeSort(arreglos[i])
+		go mergeSort(arreglos[i])
 	}
 }
 

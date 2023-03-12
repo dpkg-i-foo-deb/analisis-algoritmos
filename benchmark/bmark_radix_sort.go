@@ -8,7 +8,7 @@ import (
 
 func BmarkRadixSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		radixSort(arreglos[i])
+		go radixSort(arreglos[i])
 	}
 }
 

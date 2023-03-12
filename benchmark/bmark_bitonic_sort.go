@@ -8,7 +8,7 @@ import (
 
 func BmarkBitonicSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		bitonicSort(arreglos[i])
+		go bitonicSort(arreglos[i])
 	}
 }
 

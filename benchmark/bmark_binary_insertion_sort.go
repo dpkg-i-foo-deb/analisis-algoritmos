@@ -8,7 +8,7 @@ import (
 
 func BmarkBinaryInsertionSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		binaryInsertionSort((arreglos)[i])
+		go binaryInsertionSort((arreglos)[i])
 	}
 }
 

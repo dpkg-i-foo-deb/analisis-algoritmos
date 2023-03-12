@@ -8,7 +8,7 @@ import (
 
 func BmarkShakerSort(arreglos []modelos.Arreglo) {
 	for i := range arreglos {
-		shakerSort(arreglos[i])
+		go shakerSort(arreglos[i])
 	}
 }
 
