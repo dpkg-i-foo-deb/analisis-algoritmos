@@ -58,7 +58,7 @@ func abrirArchivos() {
 	archivo100Mil = util.AbrirArchivo("arreglo-100-mil.json")
 	archivo500Mil = util.AbrirArchivo("arreglo-500-mil.json")
 	archivo1Millon = util.AbrirArchivo("arreglo-1-millon.json")
-	archivo10Millones = util.AbrirArchivo("arreglo-1-millon.json")
+	archivo10Millones = util.AbrirArchivo("arreglo-10-millones.json")
 
 }
 
