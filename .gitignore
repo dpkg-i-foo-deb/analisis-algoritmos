@@ -17,6 +17,9 @@ __debug_bin
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+arreglo-10-mil.json
+arreglo-50-mil.json
+arreglo-500-mil.json
 arreglo-1-millon.json
 arreglo-10-millones.json
 arreglo-100-millones.json
