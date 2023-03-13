@@ -15,6 +15,9 @@ func BmarkStoogeSort(arreglos []modelos.Arreglo, wg *sync.WaitGroup) {
 }
 
 func stoogeSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
+
+	defer wg.Done()
+
 	var titulo string
 
 	switch len(arreglo.Arr) {
@@ -26,7 +29,6 @@ func stoogeSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 	}
 
 	defer tiempo.MedirTiempo(titulo, modelos.STOOGE_SORT, len(arreglo.Arr))()
-	defer wg.Done()
 
 	ordenamiento.StoogeSort(&arreglo.Arr, 0, len(arreglo.Arr)-1)
 }
