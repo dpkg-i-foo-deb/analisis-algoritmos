@@ -14,12 +14,14 @@ var archivo50Mil *os.File
 var archivo100Mil *os.File
 var archivo500Mil *os.File
 var archivo1Millon *os.File
+var archivo10Millones *os.File
 
 var arreglo10Mil modelos.Arreglo
 var arreglo50Mil modelos.Arreglo
 var arreglo100Mil modelos.Arreglo
 var arreglo500mil modelos.Arreglo
 var arreglo1Millon modelos.Arreglo
+var arreglo10Millones modelos.Arreglo
 
 var crearArreglosCmd = &cobra.Command{
 	Use:   "crear-arreglos",
@@ -40,6 +42,7 @@ func crearArreglos(cmd *cobra.Command, args []string) {
 	archivo100Mil = util.CrearArchivo("arreglo-100-mil.json")
 	archivo500Mil = util.CrearArchivo("arreglo-500-mil.json")
 	archivo1Millon = util.CrearArchivo("arreglo-1-millon.json")
+	archivo10Millones = util.CrearArchivo("arreglo-10-millones.json")
 
 	arreglo10Mil.Arr = util.GenerarArreglo(10000)
 
@@ -51,15 +54,19 @@ func crearArreglos(cmd *cobra.Command, args []string) {
 
 	arreglo1Millon.Arr = util.GenerarArreglo(1000000)
 
+	arreglo10Millones.Arr = util.GenerarArreglo(10000000)
+
 	encoder10Mil := json.NewEncoder(archivo10Mil)
 	encoder50Mil := json.NewEncoder(archivo50Mil)
 	encoder100Mil := json.NewEncoder(archivo100Mil)
 	encoder500Mil := json.NewEncoder(archivo500Mil)
 	encoder1Millon := json.NewEncoder(archivo1Millon)
+	encoder10Millones := json.NewEncoder(archivo10Millones)
 
 	encoder10Mil.Encode(arreglo10Mil)
 	encoder50Mil.Encode(arreglo50Mil)
 	encoder100Mil.Encode(arreglo100Mil)
 	encoder500Mil.Encode(arreglo500mil)
 	encoder1Millon.Encode(arreglo1Millon)
+	encoder10Millones.Encode(arreglo10Millones)
 }
