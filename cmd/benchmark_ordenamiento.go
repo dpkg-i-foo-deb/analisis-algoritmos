@@ -125,5 +125,6 @@ func ejecutarBenchmarks() {
 }
 
 func escribirResultados() {
+	resultados.Consolidar()
 	log.Println(resultados.Resultados)
 }
