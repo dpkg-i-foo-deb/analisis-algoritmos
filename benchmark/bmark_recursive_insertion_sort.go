@@ -32,7 +32,7 @@ func recursiveInsertionSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 		titulo = "Recursive Insertion Sort 10 millones de elementos"
 	}
 
-	defer tiempo.MedirTiempo(titulo)()
+	defer tiempo.MedirTiempo(titulo, modelos.RECURSIVE_INSERTION_SORT, len(arreglo.Arr))()
 	defer wg.Done()
 
 	ordenamiento.RecursiveInsertionSort(&arreglo.Arr, len(arreglo.Arr))

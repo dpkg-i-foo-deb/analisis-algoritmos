@@ -32,7 +32,7 @@ func mergeSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 		titulo = "Merge Sort 10 millones de elementos"
 	}
 
-	defer tiempo.MedirTiempo(titulo)()
+	defer tiempo.MedirTiempo(titulo, modelos.MERGE_SORT, len(arreglo.Arr))()
 	defer wg.Done()
 
 	ordenamiento.MergeSort(&arreglo.Arr)

@@ -33,7 +33,7 @@ func binaryInsertionSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 		titulo = "Binary Insertion Sort 10 millones de elementos"
 	}
 
-	defer tiempo.MedirTiempo(titulo)()
+	defer tiempo.MedirTiempo(titulo, modelos.BINARY_INSERTION_SORT, len(arreglo.Arr))()
 	defer wg.Done()
 
 	ordenamiento.BinaryInsertionSort(&arreglo.Arr)

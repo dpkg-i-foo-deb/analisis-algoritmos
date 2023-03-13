@@ -31,7 +31,7 @@ func bubbleSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 		titulo = "Bubble Sort 10 millones de elementos"
 	}
 
-	defer tiempo.MedirTiempo(titulo)()
+	defer tiempo.MedirTiempo(titulo, modelos.BUBBLE_SORT, len(arreglo.Arr))()
 	defer wg.Done()
 
 	ordenamiento.BubbleSort(&arreglo.Arr)

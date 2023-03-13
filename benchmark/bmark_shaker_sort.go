@@ -32,7 +32,7 @@ func shakerSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 		titulo = "Shaker Sort 10 millones de elementos"
 	}
 
-	defer tiempo.MedirTiempo(titulo)()
+	defer tiempo.MedirTiempo(titulo, modelos.SHAKER_SORT, len(arreglo.Arr))()
 	defer wg.Done()
 
 	ordenamiento.ShakerSort(&arreglo.Arr)

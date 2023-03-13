@@ -32,7 +32,7 @@ func bitonicSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 		titulo = "Bitonic Sort 10 millones de elementos"
 	}
 
-	defer tiempo.MedirTiempo(titulo)()
+	defer tiempo.MedirTiempo(titulo, modelos.BITONIC_SORT, len(arreglo.Arr))()
 	defer wg.Done()
 
 	ordenamiento.BitonicSort(&arreglo.Arr, 0, len(arreglo.Arr), true)

@@ -32,7 +32,7 @@ func radixSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 		titulo = "Radix Sort 10 millones de elementos"
 	}
 
-	defer tiempo.MedirTiempo(titulo)()
+	defer tiempo.MedirTiempo(titulo, modelos.RADIX_SORT, len(arreglo.Arr))()
 	defer wg.Done()
 
 	ordenamiento.RadixSort(&arreglo.Arr)

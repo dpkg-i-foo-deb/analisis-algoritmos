@@ -32,7 +32,7 @@ func gnomeSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 		titulo = "Gnome Sort 10 millones de elementos"
 	}
 
-	defer tiempo.MedirTiempo(titulo)()
+	defer tiempo.MedirTiempo(titulo, modelos.GNOME_SORT, len(arreglo.Arr))()
 	defer wg.Done()
 
 	ordenamiento.GnomeSort(&arreglo.Arr)

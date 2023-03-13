@@ -32,7 +32,7 @@ func heapSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 		titulo = "Heap Sort 10 millones de elementos"
 	}
 
-	defer tiempo.MedirTiempo(titulo)()
+	defer tiempo.MedirTiempo(titulo, modelos.HEAP_SORT, len(arreglo.Arr))()
 	defer wg.Done()
 
 	ordenamiento.HeapSort(&arreglo.Arr)
