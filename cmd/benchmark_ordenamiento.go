@@ -69,18 +69,30 @@ func benchmarkOrdenamiento(cmd *cobra.Command, args []string) {
 func abrirArchivos() {
 	log.Println("Buscando los archivos...")
 	archivo10Mil = util.AbrirArchivo("arreglo-10-mil.json")
+	archivo50Mil = util.AbrirArchivo("arreglo-50-mil.json")
 	archivo100Mil = util.AbrirArchivo("arreglo-100-mil.json")
+	archivo500Mil = util.AbrirArchivo("arreglo-500-mil.json")
 	archivo1Millon = util.AbrirArchivo("arreglo-1-millon.json")
+	archivo10Millones = util.AbrirArchivo("arreglo-1-millon.json")
+
 }
 
 func leerAreglos() {
 	log.Println("Leyendo los arreglos...")
 	decoder10Mil := json.NewDecoder(archivo10Mil)
+	decoder50Mil := json.NewDecoder(archivo50Mil)
 	decoder100Mil := json.NewDecoder(archivo100Mil)
+	decoder500Mil := json.NewDecoder(archivo500Mil)
 	decoder1Millon := json.NewDecoder(archivo1Millon)
+	decoder10Millones := json.NewDecoder(archivo10Millones)
 
 	log.Println("10 mil elementos...")
 	err := decoder10Mil.Decode(&arreglo10Mil)
+
+	util.VerificarErrorDetener(err)
+
+	log.Println("50 mil elementos...")
+	err = decoder50Mil.Decode(&arreglo50Mil)
 
 	util.VerificarErrorDetener(err)
 
@@ -89,10 +101,20 @@ func leerAreglos() {
 
 	util.VerificarErrorDetener(err)
 
+	log.Println("500 mil elementos...")
+	err = decoder500Mil.Decode(&arreglo500mil)
+
+	util.VerificarErrorDetener(err)
+
 	log.Println("1 millón de elementos...")
 	err = decoder1Millon.Decode(&arreglo1Millon)
 
 	util.VerificarErrorDetener(err)
 
-	arreglosBenchmark = append(arreglosBenchmark, arreglo10Mil, arreglo100Mil, arreglo1Millon)
+	log.Println("10 millones de elementos...")
+	err = decoder10Millones.Decode(&arreglo10Millones)
+
+	util.VerificarErrorDetener(err)
+
+	arreglosBenchmark = append(arreglosBenchmark, arreglo10Mil, arreglo50Mil, arreglo100Mil, arreglo500mil, arreglo1Millon, arreglo10Millones)
 }
