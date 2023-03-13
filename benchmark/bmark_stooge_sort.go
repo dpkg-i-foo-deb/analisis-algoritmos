@@ -4,7 +4,6 @@ import (
 	"analisis-algoritmos/modelos"
 	"analisis-algoritmos/ordenamiento"
 	"analisis-algoritmos/tiempo"
-	"log"
 	"sync"
 )
 
@@ -21,12 +20,8 @@ func stoogeSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 	switch len(arreglo.Arr) {
 	case 10000:
 		titulo = "Stooge Sort 10 mil elementos"
-	case 100000:
-		log.Println("Stooge Sort tomaría 21 años con 100 mil elementos")
-		return
-	case 1000000:
-		log.Println("Stooge Sort tomaría 51 millones de años con 1 millón de elementos")
-		return
+	default:
+		titulo = "Stooge Sort es mucha demora, omitiendo..."
 	}
 
 	defer tiempo.MedirTiempo(titulo)()

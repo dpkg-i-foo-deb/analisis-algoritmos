@@ -20,10 +20,16 @@ func mergeSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 	switch len(arreglo.Arr) {
 	case 10000:
 		titulo = "Merge Sort 10 mil elementos"
+	case 50000:
+		titulo = "Merge Sort 50 mil elementos"
 	case 100000:
 		titulo = "Merge Sort 100 mil elementos"
+	case 500000:
+		titulo = "Merge Sort 500 mil elementos"
 	case 1000000:
 		titulo = "Merge Sort 1 millón de elementos"
+	case 10000000:
+		titulo = "Merge Sort 10 millones de elementos"
 	}
 
 	defer tiempo.MedirTiempo(titulo)()
