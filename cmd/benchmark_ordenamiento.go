@@ -3,6 +3,7 @@ package cmd
 import (
 	"analisis-algoritmos/benchmark"
 	"analisis-algoritmos/modelos"
+	"analisis-algoritmos/resultados"
 	"analisis-algoritmos/util"
 	"encoding/json"
 	"log"
@@ -49,6 +50,7 @@ func benchmarkOrdenamiento(cmd *cobra.Command, args []string) {
 	abrirArchivos()
 	leerAreglos()
 	ejecutarBenchmarks()
+	escribirResultados()
 }
 
 func abrirArchivos() {
@@ -120,4 +122,8 @@ func ejecutarBenchmarks() {
 	}
 
 	wg.Wait()
+}
+
+func escribirResultados() {
+	log.Println(resultados.Resultados)
 }
