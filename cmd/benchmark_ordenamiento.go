@@ -26,6 +26,7 @@ var arreglosBenchmark []modelos.Arreglo
 
 func init() {
 	rootCmd.AddCommand(benchmarkOrdenamientoCmd)
+	benchmarks = append(benchmarks, benchmark.BmarkInsertionSort)
 	benchmarks = append(benchmarks, benchmark.BmarkBinaryInsertionSort)
 	benchmarks = append(benchmarks, benchmark.BmarkBitonicSort)
 	benchmarks = append(benchmarks, benchmark.BmarkBubbleSort)
