@@ -50,7 +50,8 @@ func benchmarkOrdenamiento(cmd *cobra.Command, args []string) {
 	abrirArchivos()
 	leerAreglos()
 	ejecutarBenchmarks()
-	escribirResultados()
+	resultados.Consolidar()
+	resultados.EscribirResultado()
 }
 
 func abrirArchivos() {
@@ -122,9 +123,4 @@ func ejecutarBenchmarks() {
 	}
 
 	wg.Wait()
-}
-
-func escribirResultados() {
-	resultados.Consolidar()
-	log.Println(resultados.Resultados)
 }

@@ -2,6 +2,7 @@ package resultados
 
 import (
 	"analisis-algoritmos/modelos"
+	"analisis-algoritmos/util"
 	"sort"
 )
 
@@ -117,4 +118,14 @@ func ordenarAscendente(arreglo []modelos.Resultado) func(int, int) bool {
 		}
 		return arreglo[i].Duracion < arreglo[j].Duracion
 	}
+}
+
+func EscribirResultado() {
+	cadena := ""
+
+	for i := range Resultados {
+		cadena += Resultados[i].Titulo + " " + Resultados[i].Duracion.String()
+	}
+
+	util.EscribirArchivo("resultados.txt", []byte(cadena))
 }

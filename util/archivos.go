@@ -17,3 +17,10 @@ func AbrirArchivo(nombre string) *os.File {
 
 	return archivo
 }
+
+func EscribirArchivo(nombre string, contenido []byte) {
+
+	err := os.WriteFile(nombre, contenido, 0644)
+
+	VerificarErrorDetener(err)
+}
