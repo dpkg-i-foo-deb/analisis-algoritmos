@@ -48,22 +48,7 @@ func init() {
 func benchmarkOrdenamiento(cmd *cobra.Command, args []string) {
 	abrirArchivos()
 	leerAreglos()
-
-	log.Println("Ejecutando los benchmark, tomará un rato...")
-
-	var wg sync.WaitGroup
-
-	for i := range benchmarks {
-
-		copia := make([]modelos.Arreglo, len(arreglosBenchmark), cap(arreglosBenchmark))
-
-		copy(copia, arreglosBenchmark)
-
-		benchmarks[i](copia, &wg)
-
-	}
-
-	wg.Wait()
+	ejecutarBenchmarks()
 }
 
 func abrirArchivos() {
@@ -117,4 +102,22 @@ func leerAreglos() {
 	util.VerificarErrorDetener(err)
 
 	arreglosBenchmark = append(arreglosBenchmark, arreglo10Mil, arreglo50Mil, arreglo100Mil, arreglo500mil, arreglo1Millon, arreglo10Millones)
+}
+
+func ejecutarBenchmarks() {
+	log.Println("Ejecutando los benchmark, tomará un rato...")
+
+	var wg sync.WaitGroup
+
+	for i := range benchmarks {
+
+		copia := make([]modelos.Arreglo, len(arreglosBenchmark), cap(arreglosBenchmark))
+
+		copy(copia, arreglosBenchmark)
+
+		benchmarks[i](copia, &wg)
+
+	}
+
+	wg.Wait()
 }
