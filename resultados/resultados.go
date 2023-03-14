@@ -77,7 +77,7 @@ func ordenar() {
 	sort.Slice(resultadosBitonic, ordenarAscendente(resultadosBitonic))
 	sort.Slice(resultadosBubble, ordenarAscendente(resultadosBubble))
 	sort.Slice(resultadosBucket, ordenarAscendente(resultadosBucket))
-	sort.Slice(resultadosGnome, ordenarAscendente(resultadosBucket))
+	sort.Slice(resultadosGnome, ordenarAscendente(resultadosGnome))
 	sort.Slice(resultadosHeap, ordenarAscendente(resultadosHeap))
 	sort.Slice(resultadosInsertion, ordenarAscendente(resultadosInsertion))
 	sort.Slice(resultadosMerge, ordenarAscendente(resultadosMerge))
