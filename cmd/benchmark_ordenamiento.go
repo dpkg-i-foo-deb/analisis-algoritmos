@@ -59,9 +59,9 @@ func abrirArchivos() {
 	archivo10Mil = util.AbrirArchivo("arreglo-10-mil.json")
 	archivo50Mil = util.AbrirArchivo("arreglo-50-mil.json")
 	archivo100Mil = util.AbrirArchivo("arreglo-100-mil.json")
+	archivo200Mil = util.AbrirArchivo("arreglo-200-mil.json")
 	archivo500Mil = util.AbrirArchivo("arreglo-500-mil.json")
-	archivo1Millon = util.AbrirArchivo("arreglo-1-millon.json")
-	archivo10Millones = util.AbrirArchivo("arreglo-10-millones.json")
+	archivo600Mil = util.AbrirArchivo("arreglo-600-mil.json")
 
 }
 
@@ -70,9 +70,9 @@ func leerAreglos() {
 	decoder10Mil := json.NewDecoder(archivo10Mil)
 	decoder50Mil := json.NewDecoder(archivo50Mil)
 	decoder100Mil := json.NewDecoder(archivo100Mil)
+	decoder200Mil := json.NewDecoder(archivo200Mil)
 	decoder500Mil := json.NewDecoder(archivo500Mil)
-	decoder1Millon := json.NewDecoder(archivo1Millon)
-	decoder10Millones := json.NewDecoder(archivo10Millones)
+	decoder600Mil := json.NewDecoder(archivo600Mil)
 
 	log.Println("10 mil elementos...")
 	err := decoder10Mil.Decode(&arreglo10Mil)
@@ -90,21 +90,21 @@ func leerAreglos() {
 	util.VerificarErrorDetener(err)
 
 	log.Println("500 mil elementos...")
-	err = decoder500Mil.Decode(&arreglo500mil)
+	err = decoder200Mil.Decode(&arreglo200mil)
 
 	util.VerificarErrorDetener(err)
 
 	log.Println("1 millón de elementos...")
-	err = decoder1Millon.Decode(&arreglo1Millon)
+	err = decoder500Mil.Decode(&arreglo500Mil)
 
 	util.VerificarErrorDetener(err)
 
 	log.Println("10 millones de elementos...")
-	err = decoder10Millones.Decode(&arreglo10Millones)
+	err = decoder600Mil.Decode(&arreglo600Mil)
 
 	util.VerificarErrorDetener(err)
 
-	arreglosBenchmark = append(arreglosBenchmark, arreglo10Mil, arreglo50Mil, arreglo100Mil, arreglo500mil, arreglo1Millon, arreglo10Millones)
+	arreglosBenchmark = append(arreglosBenchmark, arreglo10Mil, arreglo50Mil, arreglo100Mil, arreglo200mil, arreglo500Mil, arreglo600Mil)
 }
 
 func ejecutarBenchmarks() {

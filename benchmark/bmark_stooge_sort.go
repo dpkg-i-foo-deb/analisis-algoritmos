@@ -18,17 +18,10 @@ func stoogeSort(arreglo modelos.Arreglo, wg *sync.WaitGroup) {
 
 	defer wg.Done()
 
-	var titulo string
-
-	switch len(arreglo.Arr) {
-	case 10000:
-		titulo = "Stooge Sort 10 mil elementos"
-	default:
-		titulo = "Stooge Sort es mucha demora, omitiendo..."
+	if len(arreglo.Arr) > 10002 {
 		return
 	}
-
-	defer tiempo.MedirTiempo(titulo, modelos.STOOGE_SORT, len(arreglo.Arr))()
+	defer tiempo.MedirTiempo(modelos.STOOGE_SORT, len(arreglo.Arr))()
 
 	ordenamiento.StoogeSort(&arreglo.Arr, 0, len(arreglo.Arr)-1)
 }

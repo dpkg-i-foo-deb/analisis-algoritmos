@@ -114,9 +114,9 @@ func reconstruir() {
 func ordenarAscendente(arreglo []modelos.Resultado) func(int, int) bool {
 	return func(i, j int) bool {
 		if arreglo[i].Duracion > arreglo[j].Duracion {
-			return arreglo[i].Duracion > arreglo[j].Duracion
+			return arreglo[i].CantidadElementos > arreglo[j].CantidadElementos
 		}
-		return arreglo[i].Duracion < arreglo[j].Duracion
+		return arreglo[i].CantidadElementos < arreglo[j].CantidadElementos
 	}
 }
 
@@ -124,7 +124,7 @@ func EscribirResultado() {
 	cadena := ""
 
 	for i := range Resultados {
-		cadena += Resultados[i].Titulo + " " + Resultados[i].Duracion.String()
+		cadena += Resultados[i].Titulo + " " + Resultados[i].Duracion.String() + "\n"
 	}
 
 	util.EscribirArchivo("resultados.txt", []byte(cadena))
