@@ -16,7 +16,7 @@ var benchmarkOrdenamientoCmd = &cobra.Command{
 	Use:   "benchmark-ordenamiento",
 	Short: "Comparar tiempos de ordenamiento",
 	Long: `Compara el tiempo de ejecución de diferentes algoritmos
-	de ordenamiento utilizando arreglos de 1, 10 y 100 millones de elementos
+	de ordenamiento utilizando arreglos de varios tamaños
 	(Deben haber sido creados previamente)`,
 	Run: benchmarkOrdenamiento,
 }
@@ -74,32 +74,26 @@ func leerAreglos() {
 	decoder500Mil := json.NewDecoder(archivo500Mil)
 	decoder600Mil := json.NewDecoder(archivo600Mil)
 
-	log.Println("10 mil elementos...")
 	err := decoder10Mil.Decode(&arreglo10Mil)
 
 	util.VerificarErrorDetener(err)
 
-	log.Println("50 mil elementos...")
 	err = decoder50Mil.Decode(&arreglo50Mil)
 
 	util.VerificarErrorDetener(err)
 
-	log.Println("100 mil elementos...")
 	err = decoder100Mil.Decode(&arreglo100Mil)
 
 	util.VerificarErrorDetener(err)
 
-	log.Println("500 mil elementos...")
 	err = decoder200Mil.Decode(&arreglo200mil)
 
 	util.VerificarErrorDetener(err)
 
-	log.Println("1 millón de elementos...")
 	err = decoder500Mil.Decode(&arreglo500Mil)
 
 	util.VerificarErrorDetener(err)
 
-	log.Println("10 millones de elementos...")
 	err = decoder600Mil.Decode(&arreglo600Mil)
 
 	util.VerificarErrorDetener(err)

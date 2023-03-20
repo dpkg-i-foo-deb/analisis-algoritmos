@@ -26,8 +26,7 @@ var arreglo600Mil modelos.Arreglo
 var crearArreglosCmd = &cobra.Command{
 	Use:   "crear-arreglos",
 	Short: "Crear arreglos para los algoritmos",
-	Long: `Crea arreglos de 1, 10 y 100 millones de
-	elementos para ser utilizados en los diferentes
+	Long: `Crea arreglos de varios tamaños para ser utilizados en los diferentes
 	algoritmos`,
 	Run: crearArreglos,
 }
